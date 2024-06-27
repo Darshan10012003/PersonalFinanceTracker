@@ -9,10 +9,10 @@ export class CallApiService {
 
   constructor(private http : HttpClient) { }
   
-  baseUrl="http://localhost:9092/bank/"
+  baseUrl="http://localhost:7777/wallet/"
 
   newAccount(data : any):Observable<any>{
-    return this.http.post(this.baseUrl+"savedata",data);
+    return this.http.post(this.baseUrl+"saveWalletData",data,{responseType :'text'});
   }
 
 }
