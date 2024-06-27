@@ -1,0 +1,14 @@
+<form [formGroup]="newAccountForm" (ngSubmit)="newAccountCreate()">  
+    <div>
+        Enter The Name :- <input formControlName="name" type="text" name="username" id="username">
+    </div>
+    
+    <div>
+       <label for="radio button">Enter The Account Type:-</label><br>
+       <div *ngFor="let accountType of radiobtnArray">
+           <input formControlName="accountType" type="radio" name="type"  [value]="accountType">{{accountType}}
+       </div>
+    </div>
+    <input type="submit" value="Create New Account">
+</form>
+
