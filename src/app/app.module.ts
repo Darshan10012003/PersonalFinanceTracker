@@ -18,13 +18,20 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { TransactionHistoryComponent } from './Components/transaction-history/transaction-history.component';
+import { NavComponent } from './Components/nav/nav.component';
+import { HomeComponent } from './Components/home/home.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NewaccountComponent,
-   
+   TransactionHistoryComponent,
+   NavComponent,
+   HomeComponent,
+
   ],
   imports: [
     BrowserModule,
