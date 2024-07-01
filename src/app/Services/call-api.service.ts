@@ -15,4 +15,10 @@ export class CallApiService {
     return this.http.post(this.baseUrl+"saveWalletData",data,{responseType :'text'});
   }
 
+  withDepMoney(id : string,money : any){
+    console.log(money);
+    
+    return this.http.post(this.baseUrl+"depositeMoney/"+id,money,{responseType:'text'})
+  }
+
 }
