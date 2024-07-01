@@ -1,0 +1,30 @@
+<div class="container" style="border: 1px solid; padding: 20px; text-align: center; justify-content: center ;">
+    <h1 class="text-center">Login Form</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="loginBtn()" class="example-form">
+    
+        <mat-form-field class="example-full-width">
+            <mat-label>EmailId</mat-label>
+            <input type="text" matInput formControlName="emailId" placeholder="Ex. Kal@gmail.com">
+          </mat-form-field>
+          <div class="alert alert-danger" *ngIf="getFromControl['emailId'].touched&&getFromControl['emailId'].invalid">
+            <div *ngIf="getFromControl['emailId'].errors&&getFromControl['emailId'].errors['required']">
+              <strong>EmailId is required</strong>
+            </div>
+          </div>
+          <br>
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="text" matInput formControlName="password" placeholder="Ex. Kal@#123">
+          </mat-form-field>
+          <div class="alert alert-danger" *ngIf="getFromControl['password'].touched&&getFromControl['password'].invalid">
+            <div *ngIf="getFromControl['password'].errors&&getFromControl['password'].errors['required']">
+              <strong>Password is required</strong>
+            </div>
+          </div>
+              
+        <button mat-raised-button color="accent" [disabled]="loginForm.invalid">Login</button>
+        <hr>
+        <p class="medium " routerLink="/forgetpassword"><a class="text-muted">Forget password?</a></p>
+    </form>
+</div>

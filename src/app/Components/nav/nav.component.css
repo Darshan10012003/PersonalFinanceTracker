@@ -1,0 +1,24 @@
+    /* Custom theme styles */
+    .navbar-custom {
+        background-color: #3305ff; /* Dark blue */
+        color: white;
+        padding: 15px;
+        border: 1px solid;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+      .navbar-custom .navbar-brand,
+      .navbar-custom .nav-link {
+        color: white;
+      }
+      .navbar-custom .nav-link:hover {
+        color: #66b2ff; /* Light blue */
+      }
+      .navbar-custom .dropdown-menu {
+        background-color: #004d99;
+      }
+      .navbar-custom .dropdown-item {
+        color: white;
+      }
+      .navbar-custom .dropdown-item:hover {
+        background-color: #66b2ff;
+      }

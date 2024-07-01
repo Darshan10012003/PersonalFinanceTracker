@@ -1,0 +1,45 @@
+<form [formGroup]="registerForm" (ngSubmit)="registerBtn()" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput formControlName="username" placeholder="Ex. Kalyani PriyaDarshan">
+      <!-- <mat-error *ngIf="name.hasError('name') && !name.hasError('required')">
+          Please Enter a Name
+        </mat-error> -->
+      <!-- <mat-hint>Enter the Your Name</mat-hint> -->
+    </mat-form-field>
+    <div class="alert alert-danger" *ngIf="getFromControl['username'].touched&&getFromControl['username'].invalid">
+      <div *ngIf="getFromControl['username'].errors&&getFromControl['username'].errors['required']">
+        <strong>Name is required</strong>
+      </div>
+    </div>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="text" matInput formControlName="password" placeholder="Ex. Kal@#123">
+      </mat-form-field>
+      <div class="alert alert-danger" *ngIf="getFromControl['password'].touched&&getFromControl['password'].invalid">
+        <div *ngIf="getFromControl['password'].errors&&getFromControl['password'].errors['required']">
+          <strong>password is required</strong>
+        </div>
+      </div>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>EmailId</mat-label>
+        <input type="text" matInput formControlName="emailId" placeholder="Ex. Kal@#123">
+      </mat-form-field>
+      <div class="alert alert-danger" *ngIf="getFromControl['emailId'].touched&&getFromControl['emailId'].invalid">
+        <div *ngIf="getFromControl['emailId'].errors&&getFromControl['emailId'].errors['required']">
+          <strong>password is required</strong>
+        </div>
+      </div>
+      <br>
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    
+    <button mat-raised-button color="accent" [disabled]="registerForm.invalid">Register</button>
+  </form>

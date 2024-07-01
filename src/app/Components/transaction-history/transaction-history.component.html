@@ -1,81 +1,107 @@
-<form [formGroup]="withDepForm" (ngSubmit)="withDepButton()" class="example-form">
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Div Example</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <mat-form-field>
-    <mat-label>Choose one Option Withdraw Or Deposit</mat-label>
-    <mat-select formControlName="item">
-      <mat-option>Clear</mat-option>
-      <mat-option [value]="item" *ngFor="let item of withdrawArr">{{item}}</mat-option>
-      <!-- <mat-option value="invalid">Invalid option</mat-option> -->
-    </mat-select>
-    <mat-hint>Select One Option Withdraw Or Deposit</mat-hint>
-  </mat-form-field>
+  </head>
+  <app-nav></app-nav>
 
-  <div *ngIf="withDepForm.value.item==='Deposit' || withDepForm.value.item==='Withdraw'">
-    <div>
-      <mat-form-field class="example-full-width">
-        <mat-label>Account Number</mat-label>
-        <input type="text" matInput formControlName="accontNumber" placeholder="Ex. PUNB51059980959806142364">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="example-full-width">
-        <mat-label>Balance</mat-label>
-        <input type="number" matInput formControlName="bankDeposite" placeholder="Ex. 2000">
-      </mat-form-field>
-    </div>
+  <body>
 
-    <div>
-      <button *ngIf="withDepForm.value.item==='Deposit'" mat-raised-button color="accent">Deposit</button>
-      <button *ngIf="withDepForm.value.item==='Withdraw'" mat-raised-button color="accent">Withdraw</button>
-    </div>
-  </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z81">
 
+        <!-- Define your table columns -->
+        <ng-container matColumnDef="tRid">
+          <th mat-header-cell *matHeaderCellDef>Transaction ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.trid}} </td>
+        </ng-container>
 
+        <!-- [ngClass]="{
+          'withdraw-status':  element.trname === 'WITHDRAW',
+          'deposite-status': element.trname === 'Deposite'}" -->
+        <ng-container matColumnDef="tRname">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.trname}} </td>
+        </ng-container>
+        <ng-container matColumnDef="tRaccountType">
+          <th mat-header-cell *matHeaderCellDef> Account Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.traccountType}} </td>
+        </ng-container>
 
+        <ng-container matColumnDef="tRaccountNo">
+          <th mat-header-cell *matHeaderCellDef> Account Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.traccountNo}} </td>
+        </ng-container>
 
+        <ng-container matColumnDef="tRsenderAccountNo">
+          <th mat-header-cell *matHeaderCellDef> Sender Account No </th>
+          <td mat-cell *matCellDef="let element"> {{element.trsenderAccountNo}} </td>
+        </ng-container>
 
-  <!-- <input type="button" value="Submit" (click)="GetTransactionHistorybyWalletId()">
-<div class="container mt-4">
-      <h2>Transactions</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Transaction ID</th>
-            <th>Name</th>
-            <th>Receiver Account No</th>
-            <th>Receiver Account Type</th>
-            <th>Balance</th>
-            <th>Sender Account No</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Transaction Time</th>
-            <th>Wallet ID</th>
-            <th>Bank Deposit</th>
-            <th>Bank Withdraw</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let transaction of TransactionDataBywalletId">
-            <td>{{ transaction.trid }}</td>
-            <td>{{ transaction.trname }}</td>
-            <td>{{ transaction.traccountNo }}</td>
-            <td>{{ transaction.trbalance }}</td>
-            <td>{{ transaction.transactionTime }}</td>
-            <td>{{ transaction.walletId }}</td>
-            <td>{{ transaction.bankDeposite }}</td>
-            <td>{{ transaction.bankWithDraw }}</td>
-            <td>{{ transaction.trsenderAccountNo }}</td>
-            
-            <td>{{ transaction.trdescription }}</td>
-            
-            <td>{{ transaction.trstatus }}</td>
-            
-            <td>{{ transaction.traccountType }}</td>
+        <ng-container matColumnDef="tRdescription">
+          <th mat-header-cell *matHeaderCellDef> Description </th>
+          <td mat-cell *matCellDef="let element"> {{element.trdescription}} </td>
+        </ng-container>
+        <!-- 'failed-row': element.trstatus === 'FAILED' && element.trname === 'WITHDRAW', -->
+        <ng-container matColumnDef="tRstatus">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element" [ngClass]="{
            
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
+            'success-row': element.trstatus === 'SUCCESS'
+          }">
+            <!-- <td mat-cell *matCellDef="let element"> -->
+            {{element.trstatus}}
+          </td>
+        </ng-container>
 
-   -->
+        <ng-container matColumnDef="transactionTime">
+          <th mat-header-cell *matHeaderCellDef> Transaction Time </th>
+          <td mat-cell *matCellDef="let element"> {{element.transactionTime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tRbalance">
+          <th mat-header-cell *matHeaderCellDef> Transaction Amount </th>
+          <td mat-cell *matCellDef="let element" [ngClass]="{
+            'withdraw-status-success':  element.trname === 'WITHDRAW' && element.trstatus === 'SUCCESS',
+            'deposite-status-success': element.trname === 'Deposite' && element.trstatus === 'SUCCESS',
+            'withdraw-status-faild':  element.trname === 'WITHDRAW' && element.trstatus === 'FAILED',
+            'deposite-status-faild': element.trname === 'Deposite' && element.trstatus === 'FAILED',
+          }"> {{getFormattedBalance(element)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="walletId">
+          <th mat-header-cell *matHeaderCellDef> Wallet ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.walletId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element"> Action Buttons Here </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; " [ngClass]="isFailed(row.trstatus)"></tr>
+      </table>
+
+      <!-- Add pagination here -->
+    </div>
+    <div class="pegination">
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+
+
+    <!-- <div class="mat-elevation-z8">
+  <table class="mat-elevation-z81">
+adasdasdsadadsdsadadsadsadsadsadsadsasd
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum delectus a neque, officia dignissimos in saepe numquam, illo dolores excepturi reiciendis repellendus recusandae impedit fugit nam doloribus reprehenderit aliquam! Velit.
+  </table>
+</div>
+<div class="pegination">
+
+</div> -->

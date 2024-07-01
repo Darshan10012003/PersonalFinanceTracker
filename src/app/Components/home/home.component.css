@@ -1,0 +1,111 @@
+/* body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+} */
+
+.homepage {
+  /* background: url('https://th.bing.com/th/id/R.5aa79ddf17ae96ac06974b522de7f8ee?rik=g2FiXtI0NmWhIQ&riu=http%3a%2f%2fimages.unsplash.com%2fphoto-1553801613-9b225d58f429%3fcrop%3dentropy%26cs%3dtinysrgb%26fit%3dmax%26fm%3djpg%26ixid%3dMnwxMjA3fDB8MXxzZWFyY2h8Mnx8YmFua2luZyUyMGFuZCUyMGZpbmFuY2V8fDB8fHx8MTYyNTMwODY3MA%26ixlib%3drb-1.2.1%26q%3d80%26w%3d1080&ehk=GvqBQHsaNZiiOq5qUYw0W88%2b8yopxBHLN9BqNmXioqs%3d&risl=&pid=ImgRaw&r=0') no-repeat center center fixed;  */
+  /* background: url('https://g.foolcdn.com/editorial/images/547401/deutschebankbremen.jpg') no-repeat center center fixed;  */
+  background: url('https://static.vecteezy.com/system/resources/previews/010/518/840/original/digital-finance-and-banking-service-in-futuristic-background-bank-building-with-online-payment-transaction-secure-money-and-financial-innovation-technology-vector.jpg') no-repeat center center fixed; 
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  padding-left: 50px;
+  
+}
+
+.homepage h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.homepage p.lead {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* .homepage p.mb-4 {
+  margin-bottom: 2rem;
+} */
+
+.buttons
+{
+  /* width: 400px; */
+  /* display: flex;
+  justify-content: space-between; */
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.buttons a.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+.btn-custom-red {
+  background-color: #a231ff;
+  border-color: #000000;
+  color: white;
+}
+
+.btn-custom-red:hover {
+  background-color: #8c00ff;
+  border-color: #000000;
+  color: white;
+  box-shadow: 0px 0px 10px 0px white;
+  transition: background-color , border-color 1s;
+}
+
+.btn-custom-orange {
+  background-color: #ff7f16;
+  border-color: #000000;
+  color: white;
+}
+
+.btn-custom-orange:hover {
+  background-color: #ff7f16;
+  border-color: #000000;
+  color: white;
+  box-shadow: 0px 0px 10px 0px white;
+  transition: background-color  2s;
+  transition: box-shadow  2s;
+  transition: border-color  1s;
+  
+}
+#textbox
+{
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.637);
+  padding: 10px;
+  border-radius: 10px;
+  right: 20%;
+  /* margin-top: 15%; */
+  height: 400px;
+  text-align: center;
+  justify-content: center;
+  animation: slide-up 1s ease forwards;
+  /* display: flex; */
+  /* max-width: 2000px; */
+}
+hr
+{
+  background-color: white;
+}
+@keyframes slide-up {
+  0% {
+    bottom: -400px; /* Start position below the viewport */
+  }
+  100% {
+    bottom: 0; /* Final position where the textbox settles */
+  }
+}
+/* #textbox :hover
+{
+  background-color: rgba(0, 0, 0, 0.877);
+  transition:  background-color 2s;
+} */
