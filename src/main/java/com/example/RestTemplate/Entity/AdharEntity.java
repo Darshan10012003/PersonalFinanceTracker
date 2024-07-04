@@ -23,5 +23,9 @@ public class AdharEntity {
 	private String adharEncryptedNo;
 	
 	private String name;
+	
+	private String refNumber;
+	
+	private Long matchedId;
 
 }

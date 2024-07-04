@@ -34,4 +34,12 @@ public class AdharController {
 		return new ResponseEntity<String>(adharService.getAdharNumberFromEncryptedData(adharNumber) , HttpStatus.OK);
 	}
 
+	@GetMapping("/getMatchid/{adharNumber}")
+	public ResponseEntity<Long> getMatchId(@PathVariable("adharNumber") String adharNumber)  
+	{
+		return new ResponseEntity<Long>(adharService.getMatchId(adharNumber) , HttpStatus.ACCEPTED);
+	}
+	
+	
+	
 }

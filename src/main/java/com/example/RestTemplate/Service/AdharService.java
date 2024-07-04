@@ -11,4 +11,6 @@ public interface AdharService {
 	public String SaveAdharData (AdharEntity adharEntity) ;
 	
 	public String getAdharNumberFromEncryptedData(String adharNumber) ;
+	public Long getMatchId(String adharNumber) ;
+	
 }
