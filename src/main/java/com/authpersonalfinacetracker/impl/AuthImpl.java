@@ -51,8 +51,13 @@ public class AuthImpl implements AuthService {
 		// TODO Auto-generated method stub
 		ObjectMapper objectMapper = new ObjectMapper();
 		AuthEnity convertValue = objectMapper.convertValue(authProxy, AuthEnity.class);
+		
+		if (authRepo.findByEmailId(authProxy.getEmailId())!=null) {
+			return "Email ID IS ALREADY REGSITERED ";
+			//			throw new RuntimeException("Email ID Is Already Exists");
+		}
 		authRepo.save(convertValue);
-		return "Save Successfully..";
+		return "USER DETAILS SAVED SUCCESSFULY....";
 	}
 
 	@Override

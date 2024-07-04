@@ -25,14 +25,14 @@ public class AuthController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<String> postMethodName(@RequestBody AuthProxy authProxy) {
-		System.out.println(authProxy.getBirthDate());
+		System.err.println(authProxy.getBirthDate());
 		return new ResponseEntity<String>(authService.registerDetails(authProxy),HttpStatus.ACCEPTED);
 	}
 	
 	@PostMapping("/login")
 	public ResponseEntity<AuthResponse> loginWithCredentials1(@RequestBody AuthRequest request)
 	{
-		System.out.println("email"+request.getEmailId() + "pass" +request.getPassword());
+		System.err.println("email"+request.getEmailId() + "pass" +request.getPassword());
 		return new ResponseEntity<AuthResponse>(authService.loginWithCredentials(request),HttpStatus.ACCEPTED);
 	}
 	
