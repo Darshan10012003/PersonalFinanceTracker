@@ -34,12 +34,14 @@ public class JwtFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.err.println("errrrrrrrrrrrrrrrr >>>>>r  "+request.getHeaders("Authorization"));
 		
 		String header = request.getHeader(HEADERS_FOR_AUTH);
 		String username =  null;
 		String without_bearer_token =  null;
 		if (header != null && header.startsWith(BEARER)) {
 			without_bearer_token = header.substring(7);
+			System.err.println("TOken"+without_bearer_token);
 			username = jwtUtils.extractUsername(without_bearer_token);
 		}
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

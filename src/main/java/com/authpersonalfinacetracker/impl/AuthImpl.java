@@ -143,16 +143,9 @@ public class AuthImpl implements AuthService {
 		AuthEnity byEmailIdAndBirthDate = authRepo.findByEmailId(email);
 		LocalDateTime otpverifytime = LocalDateTime.now();
 
-		AuthEnity authEntity = new AuthEnity();
-		authEntity.setId(byEmailIdAndBirthDate.getId());
-		authEntity.setUsername(byEmailIdAndBirthDate.getUsername());
-		authEntity.setPassword(byEmailIdAndBirthDate.getPassword());
-		authEntity.setEmailId(byEmailIdAndBirthDate.getEmailId());
-		authEntity.setBirthDate(byEmailIdAndBirthDate.getBirthDate());
-		authEntity.setCurrentTimeandDate(byEmailIdAndBirthDate.getCurrentTimeandDate());
-		authEntity.setOtp(byEmailIdAndBirthDate.getOtp());
-		authEntity.setOtpVerifyTime(otpverifytime);
-		authRepo.save(authEntity);
+		
+		byEmailIdAndBirthDate.setOtpVerifyTime(otpverifytime);
+		authRepo.save(byEmailIdAndBirthDate);
 		int result = 0;
 		if (byEmailIdAndBirthDate != null && email.equals(byEmailIdAndBirthDate.getEmailId())
 				&& otp.equals(byEmailIdAndBirthDate.getOtp())
@@ -176,6 +169,12 @@ public class AuthImpl implements AuthService {
 		byEmailId.setPassword(password);
 		authRepo.save(byEmailId);
 		return "Update Successfully..";
+	}
+
+	@Override
+	public Boolean validateToken() {
+		// TODO Auto-generated method stub
+		return Boolean.TRUE;
 	}
 
 }

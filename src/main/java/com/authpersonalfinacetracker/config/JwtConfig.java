@@ -25,7 +25,7 @@ public class JwtConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(cs -> cs.disable()).cors(co -> co.disable())
-				.authorizeHttpRequests(req -> req.requestMatchers("/auth/**","/auth/register").permitAll().anyRequest().authenticated())
+				.authorizeHttpRequests(req -> req.requestMatchers("/auth/login","/auth/register","/auth/forgetPasswordUsingSendEmail","/auth/verifyotp","/auth/forgetPasswordEnter").permitAll().anyRequest().authenticated())
 				.exceptionHandling(ex -> ex.authenticationEntryPoint(authEntryPoint))
 				.sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
