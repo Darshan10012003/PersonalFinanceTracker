@@ -8,17 +8,18 @@ import { WithdrawAndDepositeByCashComponent } from './Components/withdraw-and-de
 import { RegisterComponent } from './Components/register/register.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ForgetpasswordComponent } from './Components/forgetpassword/forgetpassword.component';
+import { authGuardGuard } from './AuthGuard/auth-guard.guard';
 
 
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
-  {path:'newAccount',component:NewaccountComponent},
-  {path:'trhistory',component:TransactionHistoryComponent},
+  {path:'newAccount',component:NewaccountComponent,canActivate:[authGuardGuard]},
+  {path:'trhistory',component:TransactionHistoryComponent,canActivate:[authGuardGuard]},
   {path:'nav',component:NavComponent},
   {path:'register',component : RegisterComponent},
   {path:'home',component:HomeComponent},
   {path:'login',component:LoginComponent},
-  {path:'withdrawAndDeposit',component:WithdrawAndDepositeByCashComponent},
+  {path:'withdrawAndDeposit',component:WithdrawAndDepositeByCashComponent,canActivate:[authGuardGuard]},
   {path:'forgetpassword',component:ForgetpasswordComponent}
 
 ];

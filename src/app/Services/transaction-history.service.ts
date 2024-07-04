@@ -9,7 +9,7 @@ export class TransactionHistoryService {
 
   BASE_URL = "http://localhost:7777/wallet/";
 
-  GET_WALLET_DATA_BY_WALLET_ID = this.BASE_URL + "getDataByTransactionEntity/1"
+  GET_WALLET_DATA_BY_WALLET_ID = this.BASE_URL + "getDataByTransactionEntity/2"
 
   constructor(private http: HttpClient) { }
 
