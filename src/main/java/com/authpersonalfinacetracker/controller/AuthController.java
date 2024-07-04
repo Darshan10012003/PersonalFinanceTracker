@@ -1,4 +1,4 @@
-package com.authpersonalfinacetracker.componets;
+package com.authpersonalfinacetracker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +32,14 @@ public class AuthController {
 	@PostMapping("/login")
 	public ResponseEntity<AuthResponse> loginWithCredentials1(@RequestBody AuthRequest request)
 	{
+
 		System.err.println("email"+request.getEmailId() + "pass" +request.getPassword());
 		return new ResponseEntity<AuthResponse>(authService.loginWithCredentials(request),HttpStatus.ACCEPTED);
+	}
+	
+	@GetMapping("/verifyToken")
+	public Boolean validateToken(){
+		return authService.validateToken();
 	}
 	
 	@PostMapping("forgetPasswordUsingSendEmail")
