@@ -4,112 +4,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Centered Div Example</title>
-  <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
 </head>
-<app-nav></app-nav> 
 <body>
-  
-  <div class="mat-elevation-z8" >
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z81">
+  <app-nav></app-nav>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <!-- Define your table columns -->
-        <ng-container matColumnDef="tRid">
-          <th mat-header-cell *matHeaderCellDef>Transaction ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.trid}} </td>
-        </ng-container>
+      <!-- Transaction ID Column -->
+      <ng-container matColumnDef="trid">
+        <th mat-header-cell *matHeaderCellDef>Transaction ID</th>
+        <td mat-cell *matCellDef="let element">{{element.trid}}</td>
+      </ng-container>
 
-        <!-- [ngClass]="{
-          'withdraw-status':  element.trname === 'WITHDRAW',
-          'deposite-status': element.trname === 'Deposite'}" -->
-        <ng-container matColumnDef="tRname">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element" 
-          > {{element.trname}} </td>
-        </ng-container>
-        <ng-container matColumnDef="tRaccountType">
-          <th mat-header-cell *matHeaderCellDef> Account Type </th>
-          <td mat-cell *matCellDef="let element"> {{element.traccountType}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="tRaccountNo">
-          <th mat-header-cell *matHeaderCellDef> Account Number </th>
-          <td mat-cell *matCellDef="let element"> {{element.traccountNo}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="tRsenderAccountNo">
-          <th mat-header-cell *matHeaderCellDef> Sender Account No </th>
-          <td mat-cell *matCellDef="let element"> {{element.trsenderAccountNo}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="tRdescription">
-          <th mat-header-cell *matHeaderCellDef> Description </th>
-          <td mat-cell *matCellDef="let element"> {{element.trdescription}} </td>
-        </ng-container>
-        <!-- 'failed-row': element.trstatus === 'FAILED' && element.trname === 'WITHDRAW', -->
-        <ng-container matColumnDef="tRstatus">
-          <th mat-header-cell *matHeaderCellDef> Status </th>
-          <td mat-cell *matCellDef="let element" [ngClass]="{
-           
-            'success-row': element.trstatus === 'SUCCESS'
-          }">
-           <!-- <td mat-cell *matCellDef="let element"> -->
-          {{element.trstatus}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="transactionTime">
-          <th mat-header-cell *matHeaderCellDef> Transaction Time </th>
-          <td mat-cell *matCellDef="let element"> {{element.transactionTime}} </td>
-        </ng-container>
-        
-        <ng-container matColumnDef="tRbalance">
-          <th mat-header-cell *matHeaderCellDef> Transaction Amount </th>
-          <td mat-cell *matCellDef="let element"  [ngClass]="{
-            'withdraw-status-success':  element.trname === 'WITHDRAW' && element.trstatus === 'SUCCESS',
-            'deposite-status-success': element.trname === 'Deposite' && element.trstatus === 'SUCCESS',
-            'withdraw-status-faild':  element.trname === 'WITHDRAW' && element.trstatus === 'FAILED',
-            'deposite-status-faild': element.trname === 'Deposite' && element.trstatus === 'FAILED',
-          }"> {{getFormattedBalance(element)}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="walletId">
-          <th mat-header-cell *matHeaderCellDef> Wallet ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.walletId}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Actions </th>
-          <td mat-cell *matCellDef="let element"> Action Buttons Here </td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns; " [ngClass]="isFailed(row.trstatus)" ></tr>
-      </table>
-      
-      <!-- Add pagination here -->
-    </div>
-    <div class="pegination" >
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
-    </div>
+      <!-- Name Column -->
+      <ng-container matColumnDef="trname">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.trname}}</td>
+      </ng-container>
 
+      <!-- Account Type Column -->
+      <ng-container matColumnDef="traccountType">
+        <th mat-header-cell *matHeaderCellDef>Account Type</th>
+        <td mat-cell *matCellDef="let element">{{element.traccountType}}</td>
+      </ng-container>
 
-<!-- <div class="mat-elevation-z8">
-  <table class="mat-elevation-z81">
-adasdasdsadadsdsadadsadsadsadsadsadsasd
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum delectus a neque, officia dignissimos in saepe numquam, illo dolores excepturi reiciendis repellendus recusandae impedit fugit nam doloribus reprehenderit aliquam! Velit.
-  </table>
-</div>
-<div class="pegination">
+      <!-- Account Number Column -->
+      <ng-container matColumnDef="traccountNo">
+        <th mat-header-cell *matHeaderCellDef>Account Number</th>
+        <td mat-cell *matCellDef="let element">{{element.traccountNo}}</td>
+      </ng-container>
 
-</div> -->
+      <!-- Sender Account No Column -->
+      <ng-container matColumnDef="trsenderAccountNo">
+        <th mat-header-cell *matHeaderCellDef>Sender Account No</th>
+        <td mat-cell *matCellDef="let element">{{element.trsenderAccountNo}}</td>
+      </ng-container>
 
-  <!-- </div> -->
+      <!-- Description Column -->
+      <ng-container matColumnDef="trdescription">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{element.trdescription}}</td>
+      </ng-container>
 
+      <!-- Status Column -->
+      <ng-container matColumnDef="trstatus">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element" [ngClass]="{
+          'success-row': element.trstatus === 'SUCCESS'
+        }">{{element.trstatus}}</td>
+      </ng-container>
 
-  
+      <!-- Transaction Time Column -->
+      <ng-container matColumnDef="transactionTime">
+        <th mat-header-cell *matHeaderCellDef>Transaction Time</th>
+        <td mat-cell *matCellDef="let element">{{element.transactionTime}}</td>
+      </ng-container>
+
+      <!-- Transaction Amount Column -->
+      <ng-container matColumnDef="trbalance">
+        <th mat-header-cell *matHeaderCellDef>Transaction Amount</th>
+        <td mat-cell *matCellDef="let element" [ngClass]="{
+          'withdraw-status-success': element.trname === 'WITHDRAW' && element.trstatus === 'SUCCESS',
+          'deposite-status-success': element.trname === 'Deposite' && element.trstatus === 'SUCCESS',
+          'withdraw-status-failed': element.trname === 'WITHDRAW' && element.trstatus === 'FAILED',
+          'deposite-status-failed': element.trname === 'Deposite' && element.trstatus === 'FAILED'
+        }">{{getFormattedBalance(element)}}</td>
+      </ng-container>
+
+      <!-- Wallet ID Column -->
+      <ng-container matColumnDef="walletId">
+        <th mat-header-cell *matHeaderCellDef>Wallet ID</th>
+        <td mat-cell *matCellDef="let element">{{element.walletId}}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">Action Buttons Here</td>
+      </ng-container>
+
+      <!-- Header Row -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <!-- Data Rows -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="isFailed(row.trstatus)"></tr>
+    </table>
+
+    <!-- Pagination -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

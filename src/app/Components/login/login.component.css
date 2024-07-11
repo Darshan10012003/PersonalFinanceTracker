@@ -1,0 +1,112 @@
+body {
+    background-color: #f0f4f8;
+    /* font-family: 'Roboto', sans-serif; */
+    /* Replace with your chosen URL */
+    /* background-image: url('https://images.unsplash.com/photo-1556742044-3c52d6e88c62'); */
+    background-image: url('https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .container {
+    margin-top: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0%;
+    animation: slideIn 0.9s ease-out; /* Apply the slide-in animation */
+
+  }
+  @keyframes slideIn {
+    from {
+        transform: translateX(-100%); /* Start from the left */
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0); /* End at the original position */
+        opacity: 1;
+    }
+}
+  
+  .example-form {
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 40px;
+    background-color: #ffffff73;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.example-form:hover {
+    transform: translateY(-30px);
+    box-shadow: 0 4px 8px black;
+    background-color: #ffffffc5 ;
+
+  }
+
+  .example-full-width {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+  }
+  
+  hr {
+    margin: 20px 0;
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+  }
+  
+  button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #6200ea;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #3700b3;
+  }
+  
+  .alert {
+    margin-top: 10px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  p
+  {
+      text-align: center;
+    }
+    p a
+    {
+        font-size: x-large;
+      color: black;
+      font-family: 'Times New Roman', Times, serif;
+  }

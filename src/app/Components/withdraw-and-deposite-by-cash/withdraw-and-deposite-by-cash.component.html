@@ -1,0 +1,31 @@
+<form [formGroup]="withDepForm" (ngSubmit)="withDepButtons()" class="example-form">
+    <mat-form-field>
+      <mat-label>Choose one Option Withdraw Or Deposit</mat-label>
+      <mat-select formControlName="item">
+        <mat-option>Clear</mat-option>
+        <mat-option [value]="item" *ngFor="let item of withdrawArr">{{item}}</mat-option>
+        <!-- <mat-option value="invalid">Invalid option</mat-option> -->
+      </mat-select>
+      <mat-hint>Select One Option Withdraw Or Deposit</mat-hint>
+    </mat-form-field>
+  
+    <div *ngIf="withDepForm.value.item==='Deposit' || withDepForm.value.item==='Withdraw'">
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Account Number</mat-label>
+          <input type="text" matInput formControlName="accontNumber" placeholder="Ex. PUNB51059980959806142364">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Balance</mat-label>
+          <input type="number" matInput formControlName="bankDeposite" placeholder="Ex. 2000">
+        </mat-form-field>
+      </div>
+  
+      <div>
+        <button *ngIf="withDepForm.value.item==='Deposit'" mat-raised-button color="accent">Deposit</button>
+        <button *ngIf="withDepForm.value.item==='Withdraw'" mat-raised-button color="accent">Withdraw</button>
+      </div>
+    </div>
+  </form>

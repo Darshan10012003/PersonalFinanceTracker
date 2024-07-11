@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TransactionHistoryService } from 'src/app/Services/transaction-history.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
-import { DataSource } from '@angular/cdk/collections';
 
 
 @Component({
@@ -14,9 +13,8 @@ import { DataSource } from '@angular/cdk/collections';
   styleUrls: ['./transaction-history.component.css']
 })
 export class TransactionHistoryComponent implements OnInit {
-  
-   displayedColumns: string[] = ['tRid', 'tRaccountNo', 'tRaccountType', 
-   'tRsenderAccountNo' , 'tRdescription', 'transactionTime', 'tRname' , 'tRstatus', 'tRbalance','walletId'];
+  displayedColumns: string[] = ['trid', 'traccountNo', 'traccountType', 
+   'trsenderAccountNo' , 'trdescription', 'transactionTime', 'trname' , 'trstatus', 'trbalance','walletId'];
   TransactionDataBywalletId : any;
   // status: Boolean = true;
   dataSource = new MatTableDataSource<any>;
