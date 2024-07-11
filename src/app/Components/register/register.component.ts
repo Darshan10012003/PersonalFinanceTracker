@@ -15,7 +15,10 @@ export class RegisterComponent implements OnInit {
 
   registerForm: any;
 
-  constructor(private fb: FormBuilder, private serviceobj: CallApiService , private router : Router) {
+ 
+
+  constructor(private fb: FormBuilder, private serviceobj: CallApiService, private router: Router) {
+
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -26,11 +29,20 @@ export class RegisterComponent implements OnInit {
 
   registerBtn() {
     console.log(this.registerForm.value.birthDate);
-    
+
     this.serviceobj.register(this.registerForm.value).subscribe({
       next: (resp) => {
         console.log(resp);
         this.router.navigate(['/login'])
+
+
+        alert(resp)
+      },
+      error: (err) => {
+        alert(err);
+      },
+      complete: () => {
+        this.router.navigateByUrl('/login')
 
       }
     })

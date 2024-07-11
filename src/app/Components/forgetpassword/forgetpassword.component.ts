@@ -13,12 +13,16 @@ export class ForgetpasswordComponent implements OnDestroy {
   forgetPassForm: any
   respStore: any;
   otpShowButton: boolean = false;
-  verifybtn : boolean = false;
+  verifybtn: boolean = false;
   seconds: number = 120;
   timer: any;
   isTimerStarted: boolean = false;
 
-  constructor(private serviceobj: CallApiService, private fb: FormBuilder , private router :Router) {
+
+  
+
+  constructor(private serviceobj: CallApiService, private fb: FormBuilder, private router: Router) {
+
     this.forgetPassForm = this.fb.group({
       emailId: ['', Validators.required],
       birthDate: ['', Validators.required],
@@ -59,7 +63,7 @@ export class ForgetpasswordComponent implements OnDestroy {
         if (this.respStore === "Send Successfully....") {
           this.startTimer();
           this.otpShowButton = true;
-          this.verifybtn=true;
+          this.verifybtn = true;
         }
         else {
           alert("Email Id Or BirthDate Not Match");
@@ -80,7 +84,7 @@ export class ForgetpasswordComponent implements OnDestroy {
         console.log(err);
       },
       complete: () => {
-        this.verifybtn=false;
+        this.verifybtn = false;
         this.newpasswordbtn = true;
       }
     })
@@ -90,7 +94,15 @@ export class ForgetpasswordComponent implements OnDestroy {
     this.serviceobj.newPasswordEnter(this.forgetPassForm.value.emailId, this.forgetPassForm.value.password).subscribe({
       next: (resp) => {
         alert(resp)
+
         this.router.navigate(['/login'])
+
+
+      }, error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        this.router.navigateByUrl('/login');
 
       }
     })
@@ -100,3 +112,4 @@ export class ForgetpasswordComponent implements OnDestroy {
     return this.forgetPassForm.controls;
   }
 }
+
