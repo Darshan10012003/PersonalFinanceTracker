@@ -1,40 +1,19 @@
 
 
 <app-nav></app-nav>
-<form [formGroup]="newAccountForm" (ngSubmit)="newAccountCreate()">  
-    <div>
-        Enter The Name :- <input formControlName="name" type="text" name="username" id="username">
-    </div>
-    
-    <div>
-       <label for="radio button">Enter The Account Type:-</label><br>
-       <div *ngFor="let accountType of radiobtnArray">
-           <input formControlName="accountType" type="radio" name="type"  [value]="accountType">{{accountType}}
-       </div>
-    </div>
-    <input type="submit" value="Create New Account">
-</form>
-
-<form [formGroup]="newAccountForm" (ngSubmit)="newAccountCreate()" class="example-form">
-
-
+<form [formGroup]="newAccountForm" (ngSubmit)="newAccountCreate()" class="example-form bank-account-form">
   <mat-form-field class="example-full-width">
     <mat-label>Name</mat-label>
     <input type="text" matInput formControlName="name" placeholder="Ex. Kalyani PriyaDarshan">
-    <!-- <mat-error *ngIf="name.hasError('name') && !name.hasError('required')">
-        Please Enter a Name
-      </mat-error> -->
-    <!-- <mat-hint>Enter the Your Name</mat-hint> -->
   </mat-form-field>
-  <div class="alert alert-danger" *ngIf="getFromControl['name'].touched&&getFromControl['name'].invalid">
-    <div *ngIf="getFromControl['name'].errors&&getFromControl['name'].errors['required']">
+  <div class="alert alert-danger" *ngIf="getFromControl['name'].touched && getFromControl['name'].invalid">
+    <div *ngIf="getFromControl['name'].errors && getFromControl['name'].errors['required']">
       <strong>Name is required</strong>
     </div>
   </div>
   <br>
   <label id="example-radio-group-label">Choose Account Type</label><br>
-  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-    formControlName="accountType">
+  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="accountType">
     <mat-radio-button class="example-radio-button" *ngFor="let accountType of radiobtnArray" [value]="accountType">
       {{accountType}}
     </mat-radio-button>
@@ -43,15 +22,26 @@
   <mat-form-field class="example-full-width">
     <mat-label>Balance Enter</mat-label>
     <input type="text" matInput formControlName="balance" placeholder="Ex.10000">
-    <mat-hint></mat-hint>
   </mat-form-field>
-  <div class="alert alert-danger" *ngIf="getFromControl['balance'].touched&&getFromControl['balance'].invalid">
-    <div *ngIf="getFromControl['balance'].errors&&getFromControl['balance'].errors['required']">
+  <div class="alert alert-danger" *ngIf="getFromControl['balance'].touched && getFromControl['balance'].invalid">
+    <div *ngIf="getFromControl['balance'].errors && getFromControl['balance'].errors['required']">
       <strong>Balance is required</strong>
     </div>
-    <div *ngIf="getFromControl['balance'].errors&&getFromControl['balance'].errors">
-      <strong *ngIf="newAccountForm.value.accountType=='Saving'">Minimum Balance is Require 1000</strong>
-      <strong *ngIf="newAccountForm.value.accountType=='Current'">Minimum Balance is Require 5000</strong>
+    <div *ngIf="getFromControl['balance'].errors">
+      <strong *ngIf="newAccountForm.value.accountType == 'Saving'">Minimum Balance is Require 1000</strong>
+      <strong *ngIf="newAccountForm.value.accountType == 'Current'">Minimum Balance is Require 5000</strong>
+    </div>
+  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Aadhaar Number</mat-label>
+    <input type="text" matInput formControlName="adharNumber" placeholder="Ex. 123456789012">
+  </mat-form-field>
+  <div class="alert alert-danger" *ngIf="getFromControl['adharNumber'].touched && getFromControl['adharNumber'].invalid">
+    <div *ngIf="getFromControl['adharNumber'].errors && getFromControl['adharNumber'].errors['required']">
+      <strong>Aadhaar Number is required</strong>
+    </div>
+    <div *ngIf="getFromControl['adharNumber'].errors && getFromControl['adharNumber'].errors['pattern']">
+      <strong>Aadhaar Number must be exactly 12 digits long</strong>
     </div>
   </div>
   <button mat-raised-button color="accent" [disabled]="newAccountForm.invalid">Create New Account</button>

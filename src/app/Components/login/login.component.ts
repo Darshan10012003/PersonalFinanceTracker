@@ -23,14 +23,15 @@ export class LoginComponent {
 
     this.serviceobj.login(this.loginForm.value).subscribe({
       next: (resp: any) => {
-        sessionStorage.setItem("Token", resp.token)
+        sessionStorage.setItem("token", resp.token)
+        alert("Login Succsessful")
+        this.router.navigate(['/newAccount'])
         console.log(resp);
       },
       error: (r) => {
         console.log("e", r);
       },
       complete: () => {
-        this.router.navigateByUrl('/newAccount')
       }
     })
   }

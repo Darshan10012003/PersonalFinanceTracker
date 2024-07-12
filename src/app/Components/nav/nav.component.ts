@@ -22,7 +22,7 @@ export class NavComponent {
       confirmButtonText: "Yes, Logout it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        sessionStorage.removeItem('Token');
+        sessionStorage.removeItem('token');
         this.router.navigateByUrl('/login');
         Swal.fire({
           title: "Logout!",

@@ -39,5 +39,9 @@ export class CallApiService {
   newPasswordEnter(emailId: string, password: any) {
     return this.http.get(this.AuthBaseUrl + "forgetPasswordEnter"+"/" + emailId + "/" + password, { responseType: 'text' })
   }
+  getToken() {
+    return sessionStorage.getItem('token')
+  }
+
 
 }

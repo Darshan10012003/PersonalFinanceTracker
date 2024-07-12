@@ -20,7 +20,8 @@
       this.newAccountForm = this.formbuilder.group({
         name: ['', [Validators.required]],
         accountType: ['', [Validators.required]],
-        balance: ['', [Validators.required,Validators.pattern('(?=.*[0-9]).{4,16}$')]]
+        balance: ['', [Validators.required,Validators.pattern('(?=.*[0-9]).{4,16}$')]],
+        adharNumber: ['', [Validators.required, Validators.pattern('^[0-9]{12}$')]]
       })
     }
     newAccountCreate() {

@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NewaccountComponent } from './Components/newaccount/newaccount.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -28,6 +28,7 @@ import { WithdrawAndDepositeByCashComponent } from './Components/withdraw-and-de
 import { RegisterComponent } from './Components/register/register.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ForgetpasswordComponent } from './Components/forgetpassword/forgetpassword.component';
+import { CustomInterceptor } from './Interceptor/custom.interceptor';
 
 
 
@@ -75,7 +76,7 @@ import { ForgetpasswordComponent } from './Components/forgetpassword/forgetpassw
     MatSelectModule,
 
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS , useClass: CustomInterceptor , multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
