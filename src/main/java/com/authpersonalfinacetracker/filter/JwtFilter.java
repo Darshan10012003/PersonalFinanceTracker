@@ -27,14 +27,14 @@ public class JwtFilter extends OncePerRequestFilter {
 	@Autowired
 	private MyUserDetails myUserDetails;
 	
-	public static final String HEADERS_FOR_AUTH = "Authorization";
+	public static final String HEADERS_FOR_AUTH = "authorization";
 	public static final String BEARER = "Bearer ";
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.err.println("errrrrrrrrrrrrrrrr >>>>>r  "+request.getHeaders("Authorization"));
+		System.err.println("errrrrrrrrrrrrrrrr >>>>>r  "+request.getHeaders("authorization"));
 		
 		String header = request.getHeader(HEADERS_FOR_AUTH);
 		String username =  null;
