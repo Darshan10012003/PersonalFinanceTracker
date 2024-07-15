@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TransactionHistoryService } from 'src/app/Services/transaction-history.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -18,9 +18,9 @@ export class TransactionHistoryComponent implements OnInit {
   TransactionDataBywalletId : any;
   // status: Boolean = true;
   dataSource = new MatTableDataSource<any>;
-  
+  bankAccountNumber: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private trService : TransactionHistoryService , private route : Router , private fb : FormBuilder)
+  constructor(private trService : TransactionHistoryService , private activateRoute : ActivatedRoute , private fb : FormBuilder)
   {
     // this.TransactionDataBywalletId = this.fb.group({
     //   tRid: [''],
@@ -36,13 +36,14 @@ export class TransactionHistoryComponent implements OnInit {
     // });
   }
   ngOnInit(): void {
+    this.bankAccountNumber =  this.activateRoute.snapshot.params['bankNo']
     this.GetTransactionHistorybyWalletId()
  
   }
   
   GetTransactionHistorybyWalletId()
   {
-    this.trService.GetTransactionHistorybyWalletId().subscribe({
+    this.trService.GetTransactionHistoryby_BankAccNo(this.bankAccountNumber).subscribe({
       next: (resp)=>
       {
         this.dataSource.data = resp

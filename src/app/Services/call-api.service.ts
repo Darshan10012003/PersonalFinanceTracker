@@ -10,15 +10,23 @@ export class CallApiService {
   constructor(private http: HttpClient) { }
 
   baseUrl = "http://localhost:7777/wallet/"
+  AuthBaseUrl = "http://localhost:8888/auth/"
 
   newAccount(data: any): Observable<any> {
     return this.http.post(this.baseUrl + "saveWalletData", data, { responseType: 'text' });
   }
 
+  // withDepMoney(id: string, money: any) {
+  //   return this.http.post(this.baseUrl + "depositeMoney/" + id, money, { responseType: 'text' })
+  // }
   withDepMoney(id: string, money: any) {
     return this.http.post(this.baseUrl + "depositeMoney/" + id, money, { responseType: 'text' })
   }
-  AuthBaseUrl = "http://localhost:8888/auth/"
+  WithDrawMoneyBycashUsing_AccNo(id: string, money: any) {
+    return this.http.post(this.baseUrl + "withDrawMoney/" + id, money, { responseType: 'text' })
+  }
+
+  
 
   register(regdata: any) {
     return this.http.post(this.AuthBaseUrl + "register", regdata, { responseType: 'text' });
@@ -42,6 +50,11 @@ export class CallApiService {
   getToken() {
     return sessionStorage.getItem('token')
   }
+  DashboardDataByAdhar(adharNumber:any)
+{
+  return this.http.get(this.baseUrl + "getWalletDataByid/"+adharNumber , {responseType : 'json'})
+}
+
 
 
 }

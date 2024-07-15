@@ -1,5 +1,6 @@
   import { Component, OnInit } from '@angular/core';
   import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
   import { CallApiService } from 'src/app/Services/call-api.service';
 
   @Component({
@@ -12,10 +13,10 @@
     ngOnInit() {
 
     }
-    newAccountForm: FormGroup;
+    newAccountForm: any;
     radiobtnArray: string[] = ['Saving', 'Current'];
 
-    constructor(private formbuilder: FormBuilder, private serviceobj: CallApiService) {
+    constructor(private formbuilder: FormBuilder, private serviceobj: CallApiService , private router : Router) {
 
       this.newAccountForm = this.formbuilder.group({
         name: ['', [Validators.required]],
@@ -31,15 +32,19 @@
       this.serviceobj.newAccount(data).subscribe({
         next: (resp) => {
           alert(resp);
+          this.DashboardDataByAdhar(this.newAccountForm.value.adharNumber);
+        
         },
         error: (err) => {
           alert(err);
         },
-        complete(){
-
-        }
-
+        complete(){}
       })
+    }
+
+    DashboardDataByAdhar(adharNumber:any)
+    {
+      this.router.navigate(['dashboard' , adharNumber])
     }
 
     get getFromControl() {

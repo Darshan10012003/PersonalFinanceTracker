@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  </head>
+<app-nav></app-nav>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Menu</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/trhistory/{{AdharData.accountNo}}">Transaction</a></li>
+            </ul>
+        </nav>
+        <div class="main-content" >
+            <header class="topbar">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <p>Welcome, User</p>
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </a>
+                </div>
+            </header>
+            <div class="content" >
+              
+                    <div class="card" style="text-align: center;">
+                        <h1> {{AdharData.name}}</h1>
+                        <hr>
+                      </div>
+                    <div class="card">
+                        <h1>Current Balance : {{AdharData.balance}} RS</h1>
+
+                       
+                    </div>
+                <div class="cards">
+                    <div class="card">
+                        <h1>Account Number</h1>
+                        <p>{{AdharData.accountNo}}</p>
+                    </div>
+                    <div class="card">
+                        <h1>Account Type</h1>
+                        <p>{{AdharData.accountType}}</p>
+                    </div>
+                    <div class="card">
+                        <h1>Bank</h1>
+                        <p>{{AdharData.bank}}</p>
+                    </div>
+                </div>
+                <div class="btn-container">
+                  <button type="button" class="btn btn-primary" (click)="DepositeMoney()" >Deposite Money</button>
+                  <button type="button" class="btn btn-secondary">Secondary Action</button>
+              </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -29,6 +29,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ForgetpasswordComponent } from './Components/forgetpassword/forgetpassword.component';
 import { CustomInterceptor } from './Interceptor/custom.interceptor';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 
 
@@ -48,6 +49,7 @@ import { CustomInterceptor } from './Interceptor/custom.interceptor';
     RegisterComponent,
     LoginComponent,
     ForgetpasswordComponent,
+    DashboardComponent,
 
   ],
   imports: [

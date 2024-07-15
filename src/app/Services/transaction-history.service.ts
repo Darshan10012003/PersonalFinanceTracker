@@ -16,6 +16,10 @@ export class TransactionHistoryService {
   GetTransactionHistorybyWalletId() :Observable<any>{
     return this.http.get(this.GET_WALLET_DATA_BY_WALLET_ID, { responseType: 'json' })
   }
+  GetTransactionHistoryby_BankAccNo(bankNo : any) :Observable<any>{
+    return this.http.get(this.BASE_URL + "getDataByTransactionEntity/"+bankNo, { responseType: 'json' })
+  }
 
 
+  
 }

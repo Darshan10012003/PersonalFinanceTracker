@@ -44,5 +44,7 @@
       <strong>Aadhaar Number must be exactly 12 digits long</strong>
     </div>
   </div>
-  <button mat-raised-button color="accent" [disabled]="newAccountForm.invalid">Create New Account</button>
+  <!-- <div *ngFor="let n of newAccountForm"> -->
+    <button mat-raised-button color="accent"  [disabled]="newAccountForm.invalid">Create New Account</button>
+  <!-- </div> -->
 </form>

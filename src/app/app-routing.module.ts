@@ -11,6 +11,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ForgetpasswordComponent } from './Components/forgetpassword/forgetpassword.component';
 import { authGuardGuard } from './AuthGuard/auth-guard.guard';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 
 
@@ -18,6 +19,9 @@ const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
   {path:'newAccount',component:NewaccountComponent,canActivate:[authGuardGuard]},
   {path:'trhistory',component:TransactionHistoryComponent,canActivate:[authGuardGuard]},
+  {path:'trhistory/:bankNo',component:TransactionHistoryComponent,canActivate:[authGuardGuard]},
+  {path:'dashboard' , component:DashboardComponent , canActivate:[authGuardGuard]},
+  {path:'dashboard/:adharno' , component:DashboardComponent , canActivate:[authGuardGuard]},
   {path:'nav',component:NavComponent},
 
   {path:'home',component:HomeComponent},

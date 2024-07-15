@@ -1,31 +1,82 @@
-<form [formGroup]="withDepForm" (ngSubmit)="withDepButtons()" class="example-form">
-    <mat-form-field>
-      <mat-label>Choose one Option Withdraw Or Deposit</mat-label>
-      <mat-select formControlName="item">
-        <mat-option>Clear</mat-option>
-        <mat-option [value]="item" *ngFor="let item of withdrawArr">{{item}}</mat-option>
-        <!-- <mat-option value="invalid">Invalid option</mat-option> -->
-      </mat-select>
-      <mat-hint>Select One Option Withdraw Or Deposit</mat-hint>
-    </mat-form-field>
-  
-    <div *ngIf="withDepForm.value.item==='Deposit' || withDepForm.value.item==='Withdraw'">
-      <div>
-        <mat-form-field class="example-full-width">
-          <mat-label>Account Number</mat-label>
-          <input type="text" matInput formControlName="accontNumber" placeholder="Ex. PUNB51059980959806142364">
-        </mat-form-field>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body >
+  <app-nav></app-nav>
+  <div class="center-container">
+    <!-- (ngSubmit)="withDepButtons()" -->
+    <form [formGroup]="withDepForm"  class="example-form">
+
+        <h1 class="text-center">Deposite Money By Cash</h1>
+        <hr>
+
+      <mat-form-field>
+        <mat-label>Choose one Option Withdraw Or Deposit</mat-label>
+        <mat-select formControlName="item">
+          <mat-option>Clear</mat-option>
+          <mat-option [value]="item" *ngFor="let item of withdrawArr">{{item}}</mat-option>
+        </mat-select>
+        <mat-hint>Select One Option Withdraw Or Deposit</mat-hint>
+      </mat-form-field>
+
+      <!-- || withDepForm.value.item === 'Withdraw' -->
+      <!-- *ngIf="withDepForm.value.item === 'Deposit' " -->
+      <div class="main-div">
+        <div class="content">
+          <mat-form-field class="example-full-width">
+            <mat-label>Account Number</mat-label>
+            <input type="text" matInput formControlName="accontNumber" placeholder="Ex. PUNB51059980959806142364">
+          </mat-form-field>
+        </div>
+        <div class="alert alert-danger" *ngIf="getFromControl['accontNumber'].touched && getFromControl['accontNumber'].invalid">
+          <div *ngIf="getFromControl['accontNumber'].errors && getFromControl['accontNumber'].errors['required']">
+            <strong>Bank Account Number Is Required</strong>
+          </div>
+        </div>
+        <div class="content">
+          <mat-form-field class="example-full-width">
+            <mat-label>Balance</mat-label>
+            <input type="number" matInput formControlName="bankDeposite" placeholder="Ex. 2000">
+          </mat-form-field>
+        </div>
+        <div class="alert alert-danger" *ngIf="getFromControl['bankDeposite'].touched && getFromControl['bankDeposite'].invalid">
+          <div *ngIf="getFromControl['bankDeposite'].errors && getFromControl['bankDeposite'].errors['required']">
+            <strong>Deposite Money More Than 2000</strong>
+          </div>
+        </div>
+      
+        <div class="content" >
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <!-- *ngIf="withDepForm.value.item === 'Deposit'" -->
+          <div *ngIf="withDepForm.value.item === 'Deposit'">
+            <button  mat-raised-button color="accent" (click)="withDepButtons()" >Deposit</button>
+          </div>
+          <div *ngIf="withDepForm.value.item === 'WITHDRAW'">
+            <button  mat-raised-button color="accent" (click)="WithDrawMoneyBycashUsing_AccNo()" >WITHDRAW</button>
+          </div>
+          <!-- <button *ngIf="withDepForm.value.item === 'Withdraw'" mat-raised-button color="accent">Withdraw</button> -->
+        </div>
       </div>
-      <div>
-        <mat-form-field class="example-full-width">
-          <mat-label>Balance</mat-label>
-          <input type="number" matInput formControlName="bankDeposite" placeholder="Ex. 2000">
-        </mat-form-field>
-      </div>
-  
-      <div>
-        <button *ngIf="withDepForm.value.item==='Deposit'" mat-raised-button color="accent">Deposit</button>
-        <button *ngIf="withDepForm.value.item==='Withdraw'" mat-raised-button color="accent">Withdraw</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.22/angular-material.min.js"></script>
+</body>
+
+</html>
